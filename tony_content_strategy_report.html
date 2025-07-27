@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Contenido - Tony Durantt Bros</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            min-height: 100vh;
+            padding: 24px;
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+        
+        .header {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 48px 40px 32px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+        }
+        
+        .header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 48px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+        
+        .section:hover {
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+        }
+        
+        .section h2 {
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.025em;
+        }
+        
+        .emoji {
+            font-size: 1.375rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            font-size: 0.875rem;
+        }
+        
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        th {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        tr {
+            transition: background-color 0.15s ease;
+        }
+        
+        tr:hover {
+            background: var(--bg-secondary);
+            cursor: pointer;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .status-excellent { 
+            background: rgba(16, 185, 129, 0.1); 
+            color: var(--accent-green);
+            border-left: 3px solid var(--accent-green);
+        }
+        .status-good { 
+            background: rgba(245, 158, 11, 0.1); 
+            color: var(--accent-orange);
+            border-left: 3px solid var(--accent-orange);
+        }
+        .status-needs-improvement { 
+            background: rgba(239, 68, 68, 0.1); 
+            color: var(--accent-red);
+            border-left: 3px solid var(--accent-red);
+        }
+        
+        .metric-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 12px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+        
+        .workflow-step {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin: 12px 0;
+            border: 1px solid var(--border-light);
+            border-left: 3px solid var(--accent-blue);
+            transition: all 0.2s ease;
+        }
+        
+        .workflow-step:hover {
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+        
+        .workflow-step h4 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .workflow-step ul {
+            margin-left: 16px;
+        }
+        
+        .workflow-step li {
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+        }
+        
+        .approval-flow {
+            background: var(--bg-primary);
+            border: 1px solid var(--accent-blue);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin: 24px 0;
+        }
+        
+        .approval-flow h3 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .day-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+        
+        .day-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+        
+        .day-card h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        
+        .day-card p {
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        
+        .day-card small {
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+        }
+        
+        .platform-linkedin { border-left-color: #0077b5; }
+        .platform-instagram { border-left-color: #e4405f; }
+        
+        .template-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin: 16px 0;
+            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+        
+        .roi-calculation {
+            background: linear-gradient(135deg, var(--accent-green), #059669);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin: 24px 0;
+        }
+        
+        .roi-calculation h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .alert-red {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-red);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 16px 0;
+            border-left: 3px solid var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        
+        .alert-red ul {
+            margin-left: 20px;
+        }
+        
+        .alert-red li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        .footer p {
+            margin-bottom: 4px;
+        }
+        
+        .progress-bar {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 8px;
+            margin: 12px 0;
+        }
+        
+        .progress-fill {
+            background: var(--accent-green);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Interactive elements */
+        .interactive {
+            cursor: pointer;
+        }
+        
+        .interactive:hover {
+            opacity: 0.8;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+            
+            .container {
+                border-radius: var(--radius-md);
+            }
+            
+            .header {
+                padding: 32px 24px 24px;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+            
+            .section {
+                padding: 24px;
+                margin-bottom: 32px;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            table {
+                font-size: 0.75rem;
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+            }
+            
+            .metric-card {
+                margin: 8px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section h2 {
+                font-size: 1.25rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Estrategia de Contenido - Tony</h1>
+            <p>Plan completo de marketing de contenidos para Durantt Bros</p>
+        </div>
+        
+        <div class="content">
+            <!-- Estrategia por Plataforma -->
+            <div class="section">
+                <h2><span class="emoji">🎯</span> Estrategia por Plataforma</h2>
+                <div class="grid">
+                    <div class="metric-card">
+                        <h3 style="color: #0077b5; margin-bottom: 15px;">📈 LinkedIn</h3>
+                        <p><strong>Objetivo:</strong> Lead generation B2B + Autoridad técnica</p>
+                        <p><strong>Audiencia:</strong> Empresarios, CTOs, decision makers</p>
+                        <p><strong>Contenido:</strong> Casos de éxito, insights técnicos, resultados</p>
+                        <p><strong>Tono:</strong> Profesional, educativo, orientado a resultados</p>
+                        <p><strong>CTA:</strong> "DM para consulta gratuita"</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 style="color: #e4405f; margin-bottom: 15px;">📱 Instagram</h3>
+                        <p><strong>Objetivo:</strong> Branding + Comunidad de desarrolladores</p>
+                        <p><strong>Audiencia:</strong> Desarrolladores, diseñadores, emprendedores jóvenes</p>
+                        <p><strong>Contenido:</strong> Behind-scenes, procesos creativos, tips rápidos</p>
+                        <p><strong>Tono:</strong> Casual, inspiracional, visual</p>
+                        <p><strong>CTA:</strong> "Síguenos para más tips"</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 style="color: #ff0000; margin-bottom: 15px;">📺 YouTube</h3>
+                        <p><strong>Objetivo:</strong> Educación + SEO + Leads a largo plazo</p>
+                        <p><strong>Audiencia:</strong> Desarrolladores buscando tutoriales</p>
+                        <p><strong>Contenido:</strong> Tutorials, code reviews, tech talks</p>
+                        <p><strong>Tono:</strong> Educativo, detallado</p>
+                        <p><strong>CTA:</strong> "Suscríbete y visita nuestro sitio"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendario de Contenido Optimizado -->
+            <div class="section">
+                <h2><span class="emoji">📅</span> Plan Semanal Optimizado - Reutilización de Contenido</h2>
+                <div class="approval-flow">
+                    <h3>🔄 Estrategia: Crear 1 vez, Usar 3+ veces</h3>
+                    <p>Tony crea contenido base y lo adapta para múltiples plataformas, maximizando tiempo y alcance.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Contenido Base</th>
+                            <th>LinkedIn</th>
+                            <th>Instagram</th>
+                            <th>YouTube</th>
+                            <th>Tiempo Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Lunes</strong></td>
+                            <td>Video tutorial/behind-scenes</td>
+                            <td>📺 Video + caso de éxito</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>2 horas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Martes</strong></td>
+                            <td>Adaptar video del lunes</td>
+                            <td>-</td>
+                            <td>📺 Reel adaptado + Stories</td>
+                            <td>📺 Video completo subido</td>
+                            <td>45 min</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Miércoles</strong></td>
+                            <td>Carrusel técnico + infografía</td>
+                            <td>📊 Post técnico detallado</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>1.5 horas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jueves</strong></td>
+                            <td>Adaptar carrusel</td>
+                            <td>-</td>
+                            <td>📊 Carrusel visual + Stories</td>
+                            <td>-</td>
+                            <td>30 min</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Viernes</strong></td>
+                            <td>Industry insight</td>
+                            <td>🔮 Post de tendencias</td>
+                            <td>📱 Stories con opinión</td>
+                            <td>-</td>
+                            <td>45 min</td>
+                        </tr>
+                        <tr style="background: #e8f5e8;">
+                            <td><strong>TOTAL</strong></td>
+                            <td><strong>3 contenidos base</strong></td>
+                            <td><strong>3 posts</strong></td>
+                            <td><strong>2 posts + 6 stories</strong></td>
+                            <td><strong>1 video</strong></td>
+                            <td><strong>5 horas</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="schedule-grid">
+                    <div class="day-card">
+                        <h4>Sábado</h4>
+                        <p>📊 Análisis de métricas</p>
+                        <small>Revisar rendimiento semanal</small>
+                    </div>
+                    <div class="day-card">
+                        <h4>Domingo</h4>
+                        <p>📋 Planificación semanal</p>
+                        <small>Brief de Keinner + plan contenido</small>
+                    </div>
+                </div>
+            </div>
+                
+                <h3>🕐 Horarios Óptimos de Publicación</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Plataforma</th>
+                            <th>Horario</th>
+                            <th>Zona Horaria</th>
+                            <th>Razón</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LinkedIn</td>
+                            <td>8:00 - 10:00 AM</td>
+                            <td>EST</td>
+                            <td>Horario laboral US/Europa</td>
+                        </tr>
+                        <tr>
+                            <td>Instagram</td>
+                            <td>12:00 - 3:00 PM</td>
+                            <td>EST</td>
+                            <td>Pausa de almuerzo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Metas Actualizadas -->
+            <div class="section">
+                <h2><span class="emoji">🎯</span> Metas Mensuales - Plan Definitivo</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>LinkedIn</th>
+                            <th>Instagram</th>
+                            <th>YouTube</th>
+                            <th>Blog Posts</th>
+                            <th>Leads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mes 1</strong></td>
+                            <td>0 → 500 seguidores<br>12 posts</td>
+                            <td>0 → 300 seguidores<br>8 posts + 2 reels</td>
+                            <td>Canal + 4 videos</td>
+                            <td>2 posts (K+E)</td>
+                            <td>5+ consultas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mes 2</strong></td>
+                            <td>500 → 1,000<br>12 posts</td>
+                            <td>300 → 600<br>8 posts + 2 reels</td>
+                            <td>100 subs + 4 videos</td>
+                            <td>2 posts (K+E)</td>
+                            <td>8+ consultas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mes 3</strong></td>
+                            <td>1,000 → 2,000<br>12 posts</td>
+                            <td>600 → 1,000<br>8 posts + 2 reels</td>
+                            <td>250 subs + 4 videos</td>
+                            <td>2 posts (K+E)</td>
+                            <td>12+ consultas</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="roi-calculation">
+                    <h3 style="color: white;">📈 Análisis de Resultados - Plan Definitivo</h3>
+                    <div class="grid">
+                        <div class="metric-card">
+                            <div class="metric-number">16</div>
+                            <div class="metric-label">Posts totales/mes</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">3</div>
+                            <div class="metric-label">Plataformas activas</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">12+</div>
+                            <div class="metric-label">Leads objetivo mes 3</div>
+                        </div>
+                    </div>
+                    <p style="color: white; text-align: center; margin-top: 20px;">
+                        <strong>Objetivo:</strong> Generar 2+ proyectos adicionales/mes | 
+                        <strong>Valor:</strong> Leads calificados de alta calidad | 
+                        <strong>Beneficio:</strong> Autoridad técnica y marca personal
+                    </p>
+                </div>
+            </div>
+
+            <!-- Indicadores de Rendimiento -->
+            <div class="section">
+                <h2><span class="emoji">📈</span> Indicadores de Rendimiento</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estado</th>
+                            <th>Crecimiento Semanal</th>
+                            <th>Engagement por Post</th>
+                            <th>Consultas por Semana</th>
+                            <th>Tipo de Interacciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="status-excellent">
+                            <td><strong>🟢 Excelente</strong></td>
+                            <td>100+ seguidores</td>
+                            <td>20+ interacciones</td>
+                            <td>3+ consultas</td>
+                            <td>Audiencia objetivo</td>
+                        </tr>
+                        <tr class="status-good">
+                            <td><strong>🟡 Bueno</strong></td>
+                            <td>50+ seguidores</td>
+                            <td>10+ interacciones</td>
+                            <td>1-2 consultas</td>
+                            <td>Interacciones regulares</td>
+                        </tr>
+                        <tr class="status-needs-improvement">
+                            <td><strong>🔴 Necesita Mejora</strong></td>
+                            <td>&lt;25 seguidores</td>
+                            <td>&lt;5 interacciones</td>
+                            <td>0 consultas</td>
+                            <td>Baja calidad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Workflow Tony-Keinner -->
+            <div class="section">
+                <h2><span class="emoji">🔄</span> Flujo de Trabajo Tony-Keinner</h2>
+                <div class="approval-flow">
+                    <h3 style="color: #2c3e50; margin-bottom: 20px;">📱 Proceso de Aprobación Diario (WhatsApp)</h3>
+                    <div class="grid">
+                        <div class="workflow-step">
+                            <h4 style="color: #2c3e50;">1. Tony Crea Contenido</h4>
+                            <ul style="color: #2c3e50;">
+                                <li>Texto + visuales</li>
+                                <li>Envía a Keinner vía WhatsApp</li>
+                                <li>Screenshot + caption</li>
+                                <li>Pregunta: "¿Aprobar para [Plataforma] [Día]?"</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-step">
+                            <h4 style="color: #2c3e50;">2. Keinner Revisa</h4>
+                            <ul style="color: #2c3e50;">
+                                <li>Revisa cada 2 horas</li>
+                                <li>1-2 minutos de revisión</li>
+                                <li>Responde: "✅ Aprobado" o "❌ Cambiar [feedback]"</li>
+                                <li>Total: 10-15 min/día</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-step">
+                            <h4 style="color: #2c3e50;">3. Tony Publica</h4>
+                            <ul style="color: #2c3e50;">
+                                <li>Espera máximo 2 horas</li>
+                                <li>Publica tras aprobación</li>
+                                <li>Gestiona comentarios todo el día</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>✅ Tony PUEDE publicar inmediatamente:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Contenido</th>
+                            <th>Ejemplos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tips generales de desarrollo</td>
+                            <td>Consejos de programación, mejores prácticas</td>
+                        </tr>
+                        <tr>
+                            <td>Noticias de la industria</td>
+                            <td>Comentarios sobre tendencias tecnológicas</td>
+                        </tr>
+                        <tr>
+                            <td>Behind-the-scenes</td>
+                            <td>Oficina, equipo, ambiente de trabajo</td>
+                        </tr>
+                        <tr>
+                            <td>Preguntas de engagement</td>
+                            <td>Encuestas, opiniones de la comunidad</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🚫 Tony NO PUEDE publicar sin aprobación:</h3>
+                <div class="alert-red">
+                    <ul>
+                        <li><strong>Nombres de clientes</strong> (a menos que esté aprobado)</li>
+                        <li><strong>Información de precios</strong></li>
+                        <li><strong>Procesos/herramientas internas</strong></li>
+                        <li><strong>Comentarios negativos de la industria</strong></li>
+                        <li><strong>Claims técnicos</strong> no verificados por Keinner</li>
+                    </ul>
+                </div>
+            </div>
+
+           
+
+            <!-- ROI y Métricas -->
+            <div class="section">
+                <h2><span class="emoji">💰</span> ROI y Análisis Financiero</h2>
+                <div class="roi-calculation">
+                    <h3>Cálculo de ROI</h3>
+                    <div class="grid">
+                       
+                        <div class="metric-card">
+                            <div class="metric-number">1</div>
+                            <div class="metric-label">Proyecto Adicional = Break-even</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">2+</div>
+                            <div class="metric-label">Proyectos = Excelente ROI</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📊 Métricas de Seguimiento Semanal - 3 Plataformas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Plataforma</th>
+                            <th>Métrica</th>
+                            <th>Valor Inicial</th>
+                            <th>Valor Final</th>
+                            <th>Crecimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4">LinkedIn</td>
+                            <td>Seguidores</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>+___</td>
+                        </tr>
+                        <tr>
+                            <td>Posts publicados</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Engagement promedio</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Visitas al perfil</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">Instagram</td>
+                            <td>Seguidores</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>+___</td>
+                        </tr>
+                        <tr>
+                            <td>Posts + Reels</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Engagement promedio</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Story views</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">YouTube</td>
+                            <td>Suscriptores</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>+___</td>
+                        </tr>
+                        <tr>
+                            <td>Videos publicados</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Views totales</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo de watch</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">Impacto Negocio</td>
+                            <td>DMs/Consultas recibidas</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Solicitudes de consulta</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Visitas al sitio web</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                        <tr>
+                            <td>Leads calificados</td>
+                            <td>___</td>
+                            <td>___</td>
+                            <td>___</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Herramientas y Alertas -->
+            <div class="section">
+                <h2><span class="emoji">🛠️</span> Herramientas y Alertas</h2>
+                
+                <h3>Herramientas Gratuitas</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Herramienta</th>
+                            <th>Propósito</th>
+                            <th>Frecuencia de Uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Instagram Insights</td>
+                            <td>Analytics de Instagram</td>
+                            <td>Semanal</td>
+                        </tr>
+                        <tr>
+                            <td>LinkedIn Analytics</td>
+                            <td>Analytics de LinkedIn</td>
+                            <td>Semanal</td>
+                        </tr>
+                        <tr>
+                            <td>Google Analytics</td>
+                            <td>Tráfico del sitio web</td>
+                            <td>Mensual</td>
+                        </tr>
+                        <tr>
+                            <td>Spreadsheet</td>
+                            <td>Seguimiento general</td>
+                            <td>Diario</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>🚨 Banderas Rojas - Revisar Estrategia</h3>
+                <div class="alert-red">
+                    <ul>
+                        <li><strong>Crecimiento de seguidores se detiene</strong> por 2+ semanas</li>
+                        <li><strong>Cero consultas de negocio</strong> por 3+ semanas</li>
+                        <li><strong>Engagement cayendo</strong> consistentemente</li>
+                        <li><strong>Audiencia incorrecta</strong> siguiendo (no relevante)</li>
+                        <li><strong>Tiempo excesivo</strong> excediendo el plan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cronograma de Reportes -->
+            <div class="section">
+                <h2><span class="emoji">📅</span> Cronograma de Reportes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Frecuencia</th>
+                            <th>Responsable</th>
+                            <th>Actividades</th>
+                            <th>Tiempo Estimado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Diario</strong></td>
+                            <td>Tony</td>
+                            <td>
+                                • Revisar engagement posts recientes<br>
+                                • Responder comentarios/DMs<br>
+                                • Anotar consultas de negocio
+                            </td>
+                            <td>30 minutos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Semanal</strong></td>
+                            <td>Tony → Keinner</td>
+                            <td>
+                                • Enviar resumen de métricas<br>
+                                • Destacar contenido exitoso<br>
+                                • Compartir leads generados
+                            </td>
+                            <td>15 minutos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mensual</strong></td>
+                            <td>Ambos</td>
+                            <td>
+                                • Revisar rendimiento general<br>
+                                • Ajustar estrategia si es necesario<br>
+                                • Establecer metas del próximo mes<br>
+                                • Celebrar logros
+                            </td>
+                            <td>60 minutos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 Informe generado para optimizar la estrategia de contenido de Durantt Bros</p>
+            <p>Última actualización: Julio 2025</p>
+        </div>
+    </div>
+</body>
+</html>
